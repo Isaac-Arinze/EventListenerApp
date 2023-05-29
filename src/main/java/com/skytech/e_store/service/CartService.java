@@ -46,7 +46,6 @@ public class CartService {
     }
 
     public void deleteCartItem(int cartItemId, User user) throws CartItemNotExistException {
-        //TODO
 
         // first check if cartItemId is valid else throw an CartItemNotExistException
         // next check if the cartItem belongs to the user else throw CartItemNotExistException exception
