@@ -1,13 +1,16 @@
-package com.skytech.estore.controller;
+package com.skytech.e_store.controller;
 
-import com.skytech.estore.common.ApiResponse;
-import com.skytech.estore.model.Category;
-import com.skytech.estore.service.CategoryService;
+import com.skytech.e_store.common.ApiResponse;
+import com.skytech.e_store.model.Category;
+import com.skytech.e_store.service.CategoryService;
 import jakarta.validation.Valid;
+import org.apache.catalina.LifecycleState;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 import java.util.Objects;
@@ -45,11 +48,10 @@ public class CategoryController {
             categoryService.updateCategory(categoryID, category);
             return new ResponseEntity<ApiResponse>(new ApiResponse(true, "updated the category"), HttpStatus.NOT_FOUND);
         }
-//            the categpry doesnt exist then return a response of unsuccessful
+//            the category doesnt exist then return a response of unsuccessful
         return  new ResponseEntity<>(new ApiResponse(false, "category does not exist"), HttpStatus.NOT_FOUND);
         }
 
     }
 
 
-}

@@ -1,11 +1,11 @@
-package com.skytech.e_store.dto;
+package com.skytech.e_store.dto.product;
 
 import com.skytech.e_store.model.Product;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
@@ -13,11 +13,17 @@ import javax.validation.constraints.NotNull;
 public class ProductDto {
 
     private  Integer id;
-    private @NotNull String name;
-    private @NotNull String description;
-    private @NotNull Integer categoryId;
-    private @NotNull double price;
-    private @NotNull String imageURL;
+
+    @NotNull
+    private  String name;
+    @NotNull
+    private String description;
+    @NotNull
+    private Integer categoryId;
+    @NotNull
+    private  double price;
+    @NotNull
+    private String imageURL;
 
     public ProductDto(@NotNull String name, @NotNull String description, @NotNull Integer categoryId, @NotNull double price, @NotNull String imageURL) {
 

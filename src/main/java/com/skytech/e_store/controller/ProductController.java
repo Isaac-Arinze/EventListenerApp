@@ -1,18 +1,18 @@
-package com.skytech.estore.controller;
+package com.skytech.e_store.controller;
 
-import com.skytech.estore.Dto.ProductDto;
-import com.skytech.estore.common.ApiResponse;
-import com.skytech.estore.model.Category;
-import com.skytech.estore.service.CategoryService;
-import com.skytech.estore.service.ProductService;
+import com.skytech.e_store.dto.product.ProductDto;
+import com.skytech.e_store.common.ApiResponse;
+import com.skytech.e_store.model.Category;
+import com.skytech.e_store.service.CategoryService;
+import com.skytech.e_store.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -34,6 +34,31 @@ public class ProductController {
         Category category = optionalCategory.get();
         productService.addProduct(productDto, category);
         return new ResponseEntity<>(new ApiResponse(true, "product has been added"), HttpStatus.CREATED);
+    }
+
+//    List all products
+
+    @GetMapping("/")
+    public ResponseEntity<List<ProductDto>> getProducts() {
+        List<ProductDto> productDtos = productService.listProducts();
+        return new ResponseEntity<>(productDtos, HttpStatus.OK);
+    }
+
+//    update a product
+
+    @PostMapping("/update/{productID}")
+
+    public ResponseEntity<ApiResponse> updateProduct(@PathVariable ("productID") Integer productID,
+                                                     @RequestBody @Valid ProductDto productDto){
+        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());
+        if (!optionalCategory.isPresent()) {
+            return new ResponseEntity<ApiResponse>(new ApiResponse(false, "category is invalid"), HttpStatus.CONFLICT);
+        }
+        Category category = optionalCategory.get();
+        productService.updateProduct(productID, productDto, category);
+        return new ResponseEntity<>(new ApiResponse(true, "Product has been updated"), HttpStatus.OK);
+    }
 
     }
-}
+
+

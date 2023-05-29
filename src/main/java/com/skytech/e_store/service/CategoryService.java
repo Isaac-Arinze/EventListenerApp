@@ -1,7 +1,7 @@
-package com.skytech.estore.service;
+package com.skytech.e_store.service;
 
-import com.skytech.estore.model.Category;
-import com.skytech.estore.repository.CategoryRepository;
+import com.skytech.e_store.model.Category;
+import com.skytech.e_store.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.skytech.e_store.dto;
+package com.skytech.e_store.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

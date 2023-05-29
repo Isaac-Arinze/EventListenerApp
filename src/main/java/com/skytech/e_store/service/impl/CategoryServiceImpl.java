@@ -1,4 +1,4 @@
-package com.skytech.estore.service.impl;
+package com.skytech.e_store.service.impl;
 
 public class CategoryServiceImpl {
 }

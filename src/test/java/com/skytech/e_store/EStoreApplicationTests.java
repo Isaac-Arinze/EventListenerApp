@@ -1,4 +1,4 @@
-package com.skytech.estore;
+package com.skytech.e_store;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

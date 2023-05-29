@@ -1,5 +1,6 @@
-package com.skytech.estore.model;
+package com.skytech.e_store.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -7,15 +8,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
+    @Data
     @AllArgsConstructor
     @NoArgsConstructor
     @Entity
-    @Table (name = "products")
+    @Table(name = "products")
     public class Product {
 
         @Id
-        @GeneratedValue (strategy = GenerationType.IDENTITY)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
         private @NotNull String name;
         private @NotNull String imageURL;
@@ -25,7 +27,6 @@ import lombok.NoArgsConstructor;
         @JsonIgnore
         @ManyToOne (fetch = FetchType.LAZY, optional = false)
         @JoinColumn (name = "category_id", nullable = false)
-
         Category category;
 
         public Product(String name, String imageURL, double price, String description, Category category) {

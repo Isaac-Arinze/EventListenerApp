@@ -1,2 +1,7 @@
-package com.skytech.e_store.exceptions;public class AuthenticationFailException {
+package com.skytech.e_store.exceptions;
+
+public class AuthenticationFailException extends Exception{
+    public AuthenticationFailException(String msg) {
+        super(msg);
+    }
 }

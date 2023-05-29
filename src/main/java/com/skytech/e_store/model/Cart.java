@@ -1,4 +1,4 @@
-package com.skytech.e_store.dto.user;
+package com.skytech.e_store.model;
 
 import com.skytech.e_store.model.Product;
 import com.skytech.e_store.model.User;
@@ -24,7 +24,7 @@ public class Cart {
     private Date createdDate;
 
     @ManyToOne
-    @Column(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
